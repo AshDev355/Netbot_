@@ -1,6 +1,6 @@
 # 🤖 NetBot
 
-**A full-stack AI chatbot with a face.** Sign in with your face, your password, or Google — then chat with an assistant that remembers you, reads your documents, searches the web, and talks back out loud.
+**A full-stack AI chatbot.** Sign in with your face, your password, or Google — then chat with an assistant that remembers you, reads your documents, searches the web, and talks back out loud.
 
 ```
 FastAPI + Supabase (Postgres/pgvector) + Gemini   ·   Next.js + React
@@ -63,8 +63,6 @@ Before first run:
 ```bash
 uvicorn app.main:app --reload
 ```
-
-Swagger UI lands at **http://localhost:8000/docs**.
 
 <details>
 <summary><strong>Optional: enable "Continue with Google"</strong></summary>
