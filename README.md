@@ -106,8 +106,6 @@ NetBot's had a few rounds of hardening — the highlights:
 - **Better memory & RAG** — long-term memory triggers now match anywhere in a message (not just the start), and a keyword-overlap reranker replaced a pass-through stub.
 - **Sessions persist across browser restarts** (`sessionStorage` → `localStorage`).
 
-The full changelog with file-by-file detail lives in [`netbot-final/README.md`](netbot-final/README.md).
-
 ## 🔭 Known limitations
 
 - `web_search` requires a `SEARCH_API_KEY`.
