@@ -1,0 +1,262 @@
+/* ---------- Intro splash ---------- */
+.intro {
+  position: relative;
+  min-height: calc(100dvh - var(--nav-h));
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  text-align: center;
+}
+
+.intro-mesh {
+  position: absolute;
+  inset: -120px;
+  background: radial-gradient(700px 500px at 30% 20%, color-mix(in srgb, var(--navy) 15%, transparent) 0%, transparent 60%),
+    radial-gradient(600px 500px at 75% 80%, color-mix(in srgb, var(--sky) 18%, transparent) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.intro-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(to right, color-mix(in srgb, var(--slate) 8%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--slate) 8%, transparent) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  pointer-events: none;
+}
+
+.intro-content {
+  position: relative;
+  z-index: 2;
+  padding: 40px 24px;
+}
+
+.intro-orbit-wrap {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.intro-orbit-ring {
+  position: absolute;
+  width: min(72vw, 520px);
+  height: min(72vw, 520px);
+  border-radius: 50%;
+  border: 1.5px dashed color-mix(in srgb, var(--navy) 35%, transparent);
+  opacity: 0;
+  animation: intro-ring-in 1.1s ease-out both;
+}
+
+.intro-orbit-ring.slow {
+  width: min(88vw, 640px);
+  height: min(88vw, 640px);
+  animation-delay: 0.15s;
+  opacity: 0;
+}
+
+.intro.orbit .intro-orbit-ring,
+.intro.settle .intro-orbit-ring {
+  opacity: 1;
+}
+
+.intro.reveal .intro-orbit-ring,
+.intro.done .intro-orbit-ring {
+  animation: intro-ring-out 0.8s ease forwards;
+}
+
+@keyframes intro-ring-in {
+  from {
+    opacity: 0;
+    transform: scale(0.6) rotate(-30deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes intro-ring-out {
+  to {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+}
+
+/* Wordmark pieces hidden until the orb settles */
+.intro-wordmark {
+  margin: 0;
+}
+
+.intro-wordmark .net,
+.intro-wordmark .b,
+.intro-wordmark .t,
+.intro-wordmark .dot {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.intro-wordmark.reveal .net,
+.intro-wordmark.reveal .b,
+.intro-wordmark.reveal .t,
+.intro-wordmark.reveal .dot,
+.intro-wordmark.done .net,
+.intro-wordmark.done .b,
+.intro-wordmark.done .t,
+.intro-wordmark.done .dot {
+  animation: intro-letter-in 0.7s cubic-bezier(0.2, 0.9, 0.3, 1.1) forwards;
+}
+
+.intro-wordmark.reveal .b,
+.intro-wordmark.done .b {
+  animation-delay: 0.08s;
+}
+
+.intro-wordmark.reveal .t,
+.intro-wordmark.done .t {
+  animation-delay: 0.16s;
+}
+
+.intro-wordmark.reveal .dot,
+.intro-wordmark.done .dot {
+  animation-delay: 0.28s;
+}
+
+@keyframes intro-letter-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Orb flies in along a revolving path, then locks into the "o" slot */
+.intro-orb {
+  animation: none !important;
+  opacity: 0;
+  transform: rotate(540deg) translateX(140px) rotate(-540deg) scale(0.35);
+}
+
+.intro.orbit .intro-orb {
+  animation: intro-orb-arrive 2.4s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
+}
+
+.intro.settle .intro-orb,
+.intro.reveal .intro-orb,
+.intro.done .intro-orb {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  animation: orb-spin 8s ease-in-out infinite !important;
+}
+
+.intro.settle .intro-orb::before,
+.intro.settle .intro-orb::after,
+.intro.reveal .intro-orb::before,
+.intro.reveal .intro-orb::after,
+.intro.done .intro-orb::before,
+.intro.done .intro-orb::after {
+  animation: ring 12s linear infinite;
+}
+
+@keyframes intro-orb-arrive {
+  0% {
+    opacity: 0;
+    transform: rotate(540deg) translateX(180px) rotate(-540deg) scale(0.25);
+  }
+  55% {
+    opacity: 1;
+    transform: rotate(180deg) translateX(48px) rotate(-180deg) scale(0.85);
+  }
+  78% {
+    transform: rotate(20deg) translateX(6px) rotate(-20deg) scale(1.08);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.intro-tagline {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3vw, 34px);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 28px auto 0;
+  max-width: 22ch;
+  color: var(--ink-2);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.intro-tagline.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.intro-tagline em {
+  font-style: normal;
+  font-weight: 500;
+  color: var(--navy);
+  position: relative;
+  white-space: nowrap;
+}
+
+.intro-tagline em::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 6px;
+  background: color-mix(in srgb, var(--sky) 30%, transparent);
+  z-index: -1;
+  border-radius: 2px;
+}
+
+.intro-hint {
+  margin: 20px 0 0;
+  font-size: 13px;
+  color: var(--slate);
+  letter-spacing: 0.06em;
+  animation: intro-hint-pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes intro-hint-pulse {
+  50% {
+    opacity: 0.45;
+  }
+}
+
+/* ---------- Auth pages (sign in / enroll) ---------- */
+.auth-page {
+  min-height: calc(100dvh - var(--nav-h));
+}
+
+@media (max-width: 640px) {
+  .intro-orb {
+    transform: rotate(540deg) translateX(90px) rotate(-540deg) scale(0.35);
+  }
+
+  @keyframes intro-orb-arrive {
+    0% {
+      opacity: 0;
+      transform: rotate(540deg) translateX(120px) rotate(-540deg) scale(0.25);
+    }
+    55% {
+      opacity: 1;
+      transform: rotate(180deg) translateX(36px) rotate(-180deg) scale(0.85);
+    }
+    78% {
+      transform: rotate(20deg) translateX(4px) rotate(-20deg) scale(1.08);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+}

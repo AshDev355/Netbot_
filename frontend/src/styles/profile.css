@@ -1,0 +1,354 @@
+.profile-shell {
+  min-height: 740px;
+  padding: 60px;
+  background: radial-gradient(circle at 20% 20%, color-mix(in srgb, var(--sky) 15%, transparent) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, color-mix(in srgb, var(--navy) 12%, transparent) 0%, transparent 50%), var(--smoke);
+  display: grid;
+  place-items: center;
+}
+
+.profile-card {
+  width: 100%;
+  max-width: 760px;
+  background: var(--card);
+  border-radius: 24px;
+  border: 1px solid var(--rule);
+  box-shadow: 0 50px 100px -30px rgba(0, 56, 118, 0.25);
+  overflow: hidden;
+}
+
+.pc-head {
+  padding: 40px;
+  background: radial-gradient(circle at 20% 20%, var(--navy-2) 0%, transparent 60%),
+    linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  position: relative;
+  overflow: hidden;
+}
+
+.pc-head::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.pc-avatar {
+  width: 96px;
+  height: 96px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--sky), white);
+  color: var(--navy);
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 38px;
+  position: relative;
+  box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.4);
+}
+
+.pc-avatar .cam {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: white;
+  display: grid;
+  place-items: center;
+  border: 3px solid white;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.pc-who {
+  position: relative;
+  min-width: 0;
+}
+
+.pc-who b {
+  display: block;
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.pc-who span {
+  display: block;
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 4px;
+}
+
+.pc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+  font-size: 11px;
+  font-weight: 700;
+  backdrop-filter: blur(10px);
+}
+
+.pc-badge .d {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #28c840;
+  box-shadow: 0 0 8px #28c840;
+}
+
+.pc-badge.off .d {
+  background: #febc2e;
+  box-shadow: 0 0 8px #febc2e;
+}
+
+.pc-avatars {
+  padding: 22px 40px;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.pc-avatars .label {
+  font-size: 11px;
+  color: var(--slate);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+.avn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: white;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 2px solid transparent;
+  padding: 0;
+}
+
+.avn:hover {
+  transform: scale(1.1);
+}
+
+.avn.on {
+  border-color: var(--navy);
+  box-shadow: 0 0 0 3px var(--ice);
+}
+
+.pc-body {
+  padding: 26px 40px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pc-sec {
+  font-size: 10.5px;
+  color: var(--slate);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 700;
+  padding: 14px 8px 8px;
+}
+
+.pc-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 15px;
+  border-radius: 12px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  color: var(--ink);
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.pc-row:hover {
+  background: var(--smoke);
+}
+
+.pc-row .ico {
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: var(--ice);
+  color: var(--navy);
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+}
+
+.pc-row .lbl {
+  flex: 1;
+  min-width: 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.pc-row .lbl small {
+  display: block;
+  color: var(--slate);
+  font-size: 11.5px;
+  margin-top: 2px;
+  font-weight: 400;
+}
+
+.pc-row .val {
+  color: var(--slate);
+  font-size: 12.5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pc-row .chev {
+  color: var(--slate);
+  font-size: 18px;
+}
+
+.pc-row.danger {
+  color: var(--danger);
+}
+
+.pc-row.danger .ico {
+  background: rgba(201, 56, 56, 0.12);
+  color: var(--danger);
+}
+
+.pc-row.danger:hover {
+  background: rgba(201, 56, 56, 0.06);
+}
+
+.pc-row .edit-input {
+  flex: 1;
+  min-width: 0;
+  height: 38px;
+  border: 1.5px solid var(--navy);
+  border-radius: 10px;
+  background: var(--card);
+  color: var(--ink);
+  padding: 0 12px;
+  font-size: 14px;
+  outline: none;
+}
+
+.pc-row .row-btn {
+  border: 1px solid var(--rule);
+  background: var(--card);
+  color: var(--navy);
+  border-radius: 999px;
+  padding: 7px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pc-row .row-btn:hover {
+  border-color: var(--navy);
+}
+
+/* ---------- Confirm dialog ---------- */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(4, 10, 20, 0.55);
+  backdrop-filter: blur(4px);
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  animation: fade-in 0.2s ease both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+.modal {
+  width: 100%;
+  max-width: 420px;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.4);
+  animation: menu-in 0.25s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+}
+
+.modal h4 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.modal p {
+  margin: 0 0 22px;
+  font-size: 13.5px;
+  color: var(--slate);
+  line-height: 1.55;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.modal-actions .btn {
+  height: 42px;
+  padding: 0 20px;
+  font-size: 13px;
+}
+
+.btn.danger {
+  background: var(--danger);
+  color: white;
+}
+
+@media (max-width: 640px) {
+  .profile-shell {
+    padding: 24px 16px;
+    min-height: 0;
+  }
+
+  .pc-head {
+    padding: 28px 24px;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .pc-avatars,
+  .pc-body {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
