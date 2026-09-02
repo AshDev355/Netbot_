@@ -1,0 +1,104 @@
+:root {
+  --navy: #003876;
+  --navy-2: #0a5cb0;
+  --navy-deep: #001a3d;
+  --sky: #4a90e2;
+  --ice: #e6eef7;
+  --smoke: #f2f4f7;
+  --ground: #fafbfc;
+  --ink: #14181f;
+  --ink-2: #2b3241;
+  --slate: #6b7385;
+  --pearl: #d5dae2;
+  --rule: #e4e7ed;
+  --card: #ffffff;
+  --graphite: #1a1f2a;
+  --glow: rgba(74, 144, 226, 0.35);
+  --danger: #c93838;
+
+  --font-display: "SF Pro Display", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --nav-h: 71px;
+}
+
+:root[data-theme="dark"] {
+  --navy: #5fa0e8;
+  --navy-2: #4a90e2;
+  --navy-deep: #b0cdee;
+  --sky: #8fb8e8;
+  --ice: #0f1e33;
+  --smoke: #0b1420;
+  --ground: #06090f;
+  --ink: #eff2f7;
+  --ink-2: #c9cfdc;
+  --slate: #7c859a;
+  --pearl: #2a3241;
+  --rule: #1b2333;
+  --card: #0e1524;
+  --graphite: #e5e9f1;
+  --glow: rgba(95, 160, 232, 0.4);
+  --danger: #ff6b6b;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--ground);
+  color: var(--ink);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+/* The theme flips via a data attribute rather than a media query, so the
+   transition would otherwise replay on every navigation paint. */
+:root[data-theme-booting] body {
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+@keyframes ring {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}

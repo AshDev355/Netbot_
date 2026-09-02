@@ -1,0 +1,341 @@
+/* ---------- Top nav ---------- */
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 40px;
+  background: color-mix(in srgb, var(--ground) 82%, transparent);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-bottom: 1px solid color-mix(in srgb, var(--rule) 60%, transparent);
+}
+
+.topnav .left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.netsol-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  font-weight: 700;
+  color: var(--slate);
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.netsol-mark svg {
+  width: 20px;
+  height: 20px;
+}
+
+.div {
+  width: 1px;
+  height: 18px;
+  background: var(--rule);
+}
+
+.nav-context {
+  font-size: 12px;
+  color: var(--slate);
+  font-weight: 600;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: auto;
+  margin-right: 14px;
+}
+
+.nav-links a {
+  padding: 7px 14px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--slate);
+  text-decoration: none;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--navy);
+  background: var(--ice);
+}
+
+.nav-links a.on {
+  color: var(--navy);
+  background: var(--ice);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--navy);
+  color: var(--navy);
+}
+
+.theme-toggle .tt-ico {
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  transition: transform 0.5s ease;
+}
+
+:root[data-theme="dark"] .theme-toggle .tt-ico {
+  transform: rotate(180deg);
+}
+
+.page {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px 96px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  height: 52px;
+  padding: 0 26px;
+  border-radius: 999px;
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.2s;
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btn.primary {
+  background: var(--navy);
+  color: white;
+  box-shadow: 0 12px 30px -10px color-mix(in srgb, var(--navy) 70%, transparent);
+}
+
+.btn.primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px -10px color-mix(in srgb, var(--navy) 80%, transparent);
+}
+
+.btn.ghost {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--rule);
+}
+
+.btn.ghost:hover:not(:disabled) {
+  border-color: var(--navy);
+  color: var(--navy);
+  background: var(--ice);
+}
+
+.btn.block {
+  justify-content: center;
+  width: 100%;
+}
+
+.btn.face {
+  background: var(--ice);
+  color: var(--navy);
+  border: 1.5px solid color-mix(in srgb, var(--navy) 15%, transparent);
+}
+
+.btn.face:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--sky) 15%, var(--ice));
+}
+
+.btn.face .pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--navy);
+  position: relative;
+}
+
+.btn.face .pulse::after {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px solid var(--navy);
+  opacity: 0;
+  animation: pulse 1.8s ease-out infinite;
+}
+
+/* ---------- Section head ---------- */
+.sec {
+  margin-top: 100px;
+  scroll-margin-top: 100px;
+}
+
+.sec-head {
+  display: flex;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.sec-head .num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--navy);
+  font-weight: 700;
+  letter-spacing: 0.24em;
+}
+
+.sec-head h2 {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 300;
+  letter-spacing: -0.025em;
+  margin: 8px 0 0;
+  line-height: 1;
+}
+
+.sec-head h2 b {
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.sec-head p {
+  margin: 0 0 4px auto;
+  color: var(--slate);
+  font-size: 13px;
+  max-width: 32ch;
+}
+
+/* ---------- Browser frame ---------- */
+.browser {
+  background: var(--card);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  box-shadow: 0 50px 100px -40px rgba(0, 56, 118, 0.25), 0 4px 20px -8px rgba(0, 0, 0, 0.06);
+}
+
+.chrome {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  background: var(--smoke);
+  border-bottom: 1px solid var(--rule);
+}
+
+.tl {
+  display: flex;
+  gap: 6px;
+}
+
+.tl span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.tl span:nth-child(1) {
+  background: #ff5f57;
+}
+
+.tl span:nth-child(2) {
+  background: #febc2e;
+}
+
+.tl span:nth-child(3) {
+  background: #28c840;
+}
+
+.url {
+  flex: 1;
+  max-width: 500px;
+  margin: 0 auto;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 12px;
+  color: var(--slate);
+  font-family: var(--font-mono);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.url::before {
+  content: "\1F512";
+  font-size: 10px;
+  opacity: 0.6;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  margin-top: 80px;
+  padding: 40px 0;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--slate);
+}
+
+.footer .fbrand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+@media (max-width: 640px) {
+  .topnav {
+    padding: 14px 20px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .page {
+    padding: 0 20px 60px;
+  }
+
+  .footer {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+}
